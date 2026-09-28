@@ -1,7 +1,7 @@
 # Học tiếng Trung
 
 Hai trang học tiếng Trung. Toàn bộ là file tĩnh (HTML, CSS, JS, JSON), không có backend, không có bước dựng;
-đăng trên GitHub Pages: https://tmn281196.github.io/hanyu/
+đăng trên GitHub Pages: https://tmn281196.github.io/xuexi_hanyu/
 
 | Trang | Nội dung |
 |---|---|
