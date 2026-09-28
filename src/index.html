@@ -9,7 +9,7 @@
   /* Tông noir như các trang bên dưới, không đổi theo sáng/tối của máy. */
   :root{
     --bg:#050608; --panel:#0C0E11; --panel2:#161B20; --ink:#EDEBE6; --muted:#8B9098; --line:#1E242A;
-    --en:#3ED9C9; --zh:#F2B646; --fr:#B99CF6;
+    --zh:#F2B646;
   }
   *{box-sizing:border-box}
   body{margin:0; background:var(--bg); color:var(--ink);
@@ -24,7 +24,7 @@
   a.card{display:block; padding:18px 18px 20px; background:var(--panel); color:inherit; text-decoration:none; transition:background .12s}
   a.card:hover{background:var(--panel2)}
   a.card:focus-visible{outline:2px solid var(--k); outline-offset:-2px}
-  .en{--k:var(--en)} .zh{--k:var(--zh)} .fr{--k:var(--fr)}
+  .zh{--k:var(--zh)}
   .card .n{display:block; margin-bottom:8px; color:var(--k); font:500 10.5px "IBM Plex Mono", monospace; letter-spacing:.12em; text-transform:uppercase}
   .card h3{margin:0 0 4px; font:600 21px/1.2 "Newsreader", Georgia, serif; color:var(--k)}
   .card .tag{margin:0 0 10px; color:var(--ink); font-size:13.5px}
@@ -50,20 +50,6 @@
       <h3>Học tiếng Trung theo từ</h3>
       <p class="tag">Đọc theo từ, không theo từng chữ</p>
       <p>Từ vựng 15 bài HSK1, 500 từ thông dụng, ngữ pháp và động từ HSK1–6; mỗi từ trong một câu tách sẵn, pinyin trên từng chữ.</p>
-    </a>
-  </div>
-
-  <h2>Ngôn ngữ khác</h2>
-  <div class="grid">
-    <a class="card en" href="https://tmn281196.github.io/english_study/">
-      <span class="n">english_study</span>
-      <h3>Tiếng Anh</h3>
-      <p>Đồ thị câu, khối từ, luyện nói theo Speaking Matrix.</p>
-    </a>
-    <a class="card fr" href="https://tmn281196.github.io/apprendre_francais/">
-      <span class="n">apprendre_francais</span>
-      <h3>Tiếng Pháp</h3>
-      <p>Luyện nói theo các bài Speaking Matrix, câu tiếng Pháp ngắt khối.</p>
     </a>
   </div>
 
