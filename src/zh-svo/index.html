@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phân tích câu tiếng Trung</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <nav class="pagenav" aria-label="Các trang">
+    <a href="index.html" aria-current="page">Mục lục</a>
+    <a href="verbs.html">Động từ</a>
+    <a href="grammar.html">Theo ngữ pháp</a>
+    <a href="dialogue.html">Hội thoại</a>
+    <a href="reference.html">Bảng tra nhãn</a>
+  </nav>
+  <header>
+    <p class="eyebrow">Phân tích câu tiếng Trung</p>
+    <h1><em>Chủ ngữ</em>, <i>vị ngữ</i>, <b>tân ngữ</b>, <u>bổ ngữ</u> — và trạng ngữ đứng trước động từ</h1>
+    <p class="lede">Câu tiếng Trung không chia động từ, không có thì, không có số nhiều: nghĩa nằm ở <strong>trật tự từ</strong>.
+      Khung cơ bản vẫn là chủ ngữ – vị ngữ – tân ngữ như tiếng Việt, nhưng mọi thứ bổ nghĩa cho động từ — thời gian,
+      nơi chốn, cách thức, cụm giới từ — đứng <strong>trước</strong> động từ: <span lang="zh">我<b>在商店</b>工作</span>,
+      tôi làm việc ở cửa hàng. Sau động từ là chỗ của tân ngữ và bổ ngữ: <span lang="zh">说<b>得很好</b></span>,
+      <span lang="zh">听<b>懂</b>了</span>. Ba trang đồ thị dưới vẽ từng câu thành cây quan hệ, mỗi từ kèm pinyin;
+      trang cuối là bảng tra nhãn.</p>
+  </header>
+
+  <div class="hub">
+    <a href="verbs.html">
+      <span class="n">01</span>
+      <h2>Động từ</h2>
+      <p>50 động từ cơ bản HSK1 và <span data-stat="verbs" data-minus="50">…</span> động từ thông dụng HSK2–4, chia nhóm theo công dụng, mỗi từ hai câu. Đồ thị cho thấy động từ mở ra những chỗ nào: ai làm, làm gì, làm thế nào.</p>
+      <span class="cnt"><span data-stat="verbs">…</span> động từ · <span data-stat="verbSents">…</span> câu</span>
+    </a>
+    <a href="grammar.html">
+      <span class="n">02</span>
+      <h2>Theo ngữ pháp</h2>
+      <p>Câu luyện xếp theo điểm ngữ pháp, từ <span lang="zh">是</span>, <span lang="zh">有</span>, <span lang="zh">在</span> tới <span lang="zh">因为…所以</span>, <span lang="zh">如果…就</span>, rồi lên HSK2–6: <span lang="zh">比</span>, <span lang="zh">把</span>, <span lang="zh">被</span>, <span lang="zh">连…都</span>.</p>
+      <span class="cnt"><span data-stat="grammar">…</span> mục · <span data-stat="grammarSents">…</span> câu</span>
+    </a>
+    <a href="dialogue.html">
+      <span class="n">03</span>
+      <h2>Hội thoại</h2>
+      <p>Hội thoại của 15 bài giáo trình HSK1 và các bài luyện nói, từng lượt lời thành một đồ thị, kèm câu ví dụ trong phần ngữ pháp của mỗi bài.</p>
+      <span class="cnt"><span data-stat="dialogue">…</span> bài · <span data-stat="dialogueSents">…</span> câu</span>
+    </a>
+    <a href="reference.html">
+      <span class="n">04</span>
+      <h2>Bảng tra nhãn</h2>
+      <p>Mười tám nhãn đồ thị dùng, đặt cạnh tên gọi quen thuộc trong ngữ pháp tiếng Trung, chia ba tầng: nòng cốt, bổ ngữ bỏ đi thì câu hỏng, và phần tháo ra câu vẫn đứng.</p>
+      <span class="cnt">18 nhãn · 3 tầng</span>
+    </a>
+  </div>
+  <footer>
+    Phân tích theo lối ngữ pháp dạy tiếng Trung quen thuộc: <span lang="zh">主语</span> chủ ngữ ·
+    <span lang="zh">谓语</span> vị ngữ · <span lang="zh">宾语</span> tân ngữ · <span lang="zh">补语</span> bổ ngữ ·
+    <span lang="zh">定语</span> định ngữ · <span lang="zh">状语</span> trạng ngữ. Câu được tách từ và gán nhãn tự động
+    bằng luật: đúng với phần lớn câu ngắn trình độ HSK1, câu dài nhiều vế thì chỉ là gần đúng. Pinyin lấy từ chính
+    câu nên giữ đúng biến điệu.
+  </footer>
+</div>
+
+<script src="field.js"></script>
+<script src="../hanyu/hanyu.js"></script>
+<script src="../hanyu/hanyu-syntax.js"></script>
+<script src="data.js"></script>
+<script>ZhSvo.boot(null);</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Học tiếng Trung theo từ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Học tiếng Trung theo từ · <span id="nwords">…</span> từ</p>
+    <h1>Đọc theo <em>từ</em>, không theo từng <i>chữ</i></h1>
+    <p class="lede">Tiếng Trung viết liền một mạch, không có dấu cách: <span class="ex" lang="zh">我是你的朋友</span>
+      là sáu chữ, nhưng chỉ có năm từ, và mắt phải tự gom <span class="ex" lang="zh">朋</span> với
+      <span class="ex" lang="zh">友</span> thành <span class="ex" lang="zh">朋友</span>. Trí nhớ làm việc giữ được chừng
+      <strong>7±2</strong> đơn vị một lúc; đọc theo từ thì mỗi đơn vị gánh được nhiều chữ hơn. Trang này tách từng câu
+      thành từ, mỗi chữ mang pinyin của nó. Đổi qua lại giữa <b>Chữ</b> và <b>Từ</b> rồi nhìn thước bên dưới mỗi câu
+      co lại.</p>
+    <details class="howto">
+      <summary>Cách học</summary>
+      <ul>
+        <li>Người mới bắt đầu đi theo <strong>15 bài</strong> của giáo trình; từ trong mỗi bài đi kèm câu hội thoại của chính bài đó.</li>
+        <li><strong>500 từ thông dụng</strong> xếp theo 18 mục ngữ pháp: mỗi từ đứng trong một câu luyện của mục mà nó xuất hiện lần đầu.
+          Mục 15–18 là phần mở rộng chung HSK2–4; từ mục 19 là các điểm ngữ pháp HSK2 tới HSK6, học xong HSK1 rồi hẵng mở.</li>
+        <li><strong>Động từ</strong>: 50 động từ cơ bản HSK1 chia 5 nhóm theo công dụng, thêm hàng trăm câu với động từ thông dụng HSK2–4;
+          mỗi động từ đi kèm câu đặt sẵn của chính nó.</li>
+        <li>Pinyin trên đầu chữ đã biến điệu đúng như khi đọc: <span lang="zh">不是</span> đọc <em>bú shì</em>,
+          <span lang="zh">一个</span> đọc <em>yí gè</em>.</li>
+        <li>Đọc to cả câu, rồi che pinyin đi đọc lại; nghĩa tiếng Việt chỉ để kiểm tra mình hiểu đúng.</li>
+      </ul>
+    </details>
+  </header>
+
+
+  <nav class="hub" id="hub" aria-label="Các nhóm từ"></nav>
+
+  <div class="controls" id="controls">
+    <input id="q" type="search" placeholder="Tìm chữ Hán, pinyin, nghĩa…  ( / )" autocomplete="off">
+    <div class="seg" id="levels" role="group" aria-label="Trình độ">
+      <button type="button" data-level="all">Mọi trình độ</button>
+      <button type="button" data-level="HSK1">HSK1</button>
+      <button type="button" data-level="HSK2">HSK2</button>
+      <button type="button" data-level="HSK3">HSK3</button>
+      <button type="button" data-level="HSK4">HSK4</button>
+      <button type="button" data-level="HSK5">HSK5</button>
+      <button type="button" data-level="HSK6">HSK6</button>
+    </div>
+    <div class="seg" id="mode" role="group" aria-label="Cách nhìn câu">
+      <button type="button" data-mode="chars">Chữ</button>
+      <button type="button" data-mode="words">Từ</button>
+    </div>
+    <span class="stat" id="stat"></span>
+  </div>
+
+  <div id="list"></div>
+
+  <footer>
+    Câu được tách thành từ theo từ vựng đã đánh dấu trong câu, phần còn lại theo từ điển của giáo trình (khớp từ dài nhất).
+    Pinyin từng chữ lấy từ chính câu đó nên giữ đúng biến điệu. Bấm vào một từ trong câu ví dụ để tới thẻ của nó.
+  </footer>
+</div>
+
+<script src="field.js"></script>
+<script src="../hanyu/hanyu.js"></script>
+<script>
+  // Dựng dữ liệu từ giáo trình rồi mới nạp app.js (app.js đọc window.ZH_DATA ngay lúc chạy).
+  Hanyu.load("../hanyu/").then(d => {
+    // Chỉ đưa những gì trang dùng: từ điển rút gọn [pinyin từng âm tiết, nghĩa, STT trong 500 từ].
+    const dict = {};
+    for (const w in d.dict) { const e = d.dict[w]; dict[w] = [e.ps ?? "", e.vi ?? "", e.n ?? 0]; }
+    const groups = d.groups.filter(g => ["lesson", "practice", "verbs"].includes(g.kind));
+    document.getElementById("nwords").textContent = groups.reduce((a, g) => a + g.words.length, 0);
+    window.ZH_DATA = {groups, sents: d.sents, dict, charPy: d.charPy};
+    const s = document.createElement("script");
+    s.src = "app.js";
+    document.body.appendChild(s);
+  }).catch(err => {
+    const p = document.createElement("p");
+    p.className = "empty";
+    p.textContent = "Không đọc được dữ liệu: " + (err && err.message || err);
+    for (const id of ["hub", "controls", "list"]) document.getElementById(id)?.remove();
+    document.querySelector("header").after(p);
+    console.error(err);
+  });
+</script>
+</body>
+</html>

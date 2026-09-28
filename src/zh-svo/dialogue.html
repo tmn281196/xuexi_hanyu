@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hội thoại</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <nav class="pagenav" aria-label="Các trang">
+    <a href="index.html">Mục lục</a>
+    <a href="verbs.html">Động từ</a>
+    <a href="grammar.html">Theo ngữ pháp</a>
+    <a href="dialogue.html" aria-current="page">Hội thoại</a>
+    <a href="reference.html">Bảng tra nhãn</a>
+  </nav>
+  <header>
+    <p class="eyebrow">Phân tích câu tiếng Trung · 03</p>
+    <h1><i>Hội thoại</i>, từng lượt lời một</h1>
+    <p class="lede">Câu nói thật thì ngắn và hay bỏ bớt: <span lang="zh">明天呢？</span> không có động từ nào,
+      <span lang="zh">去学校。</span> không có chủ ngữ. Chọn một bài ở thanh bên, chọn đoạn hội thoại, rồi lật từng
+      lượt lời; A, B là người nói. Mỗi bài còn một mục <strong>Ngữ pháp trong bài</strong>: các câu ví dụ của chính
+      điểm ngữ pháp bài đó dạy.</p>
+  </header>
+
+  <div class="board">
+    <nav class="verbs" id="chips" role="tablist" aria-label="Chọn câu"></nav>
+
+    <div class="mid">
+      <div class="stage-shell">
+        <div id="stage">
+          <svg id="wires" aria-hidden="true"></svg>
+          <button class="helpbtn" id="helpbtn" type="button" aria-expanded="false" aria-controls="axes" title="Chú dẫn cách đọc đồ thị">?</button>
+          <div class="axes" id="axes" hidden>
+            <span><b>━</b> sống cá: chủ ngữ · động từ · tân ngữ / bổ ngữ</span>
+            <span><b>╱</b> xương phụ mọc từ chính từ mà nó bổ sung, cùng một góc</span>
+            <span><b>┄</b> nét đứt: thành phần tùy ý</span>
+            <span class="hint">bấm từ để xem chi tiết · kéo để dời · lăn chuột để phóng</span>
+          </div>
+          <div class="ctrls">
+            <button class="ctrl" id="zin" title="Phóng to" aria-label="Phóng to">+</button>
+            <button class="ctrl" id="zout" title="Thu nhỏ" aria-label="Thu nhỏ">−</button>
+            <button class="ctrl wide" id="reset">Về giữa</button>
+          </div>
+          <div class="pager" id="pager" hidden></div>
+        </div>
+        <aside class="panel" id="panel" hidden>
+          <h2 id="panel-title">Chi tiết</h2>
+          <div id="panel-body"></div>
+        </aside>
+      </div>
+
+      <div class="toggles">
+        <label class="toggle" title="Chỉ giữ chủ ngữ, vị ngữ, tân ngữ và các bổ ngữ; ẩn định ngữ, trạng ngữ"><input type="checkbox" id="t-core"> Chỉ khung câu</label>
+      </div>
+
+      <div class="ribbon">
+        <h2>Câu chia theo chức vụ</h2>
+        <div class="rib-line" id="ribbon"></div>
+        <div class="sline"><span class="spk" id="spk" hidden></span><p class="spy" id="spy"></p></div>
+        <p class="vi" id="vi"></p>
+        <p class="snote" id="snote" hidden></p>
+      </div>
+
+      <div class="legend">
+        <span><i class="sw s"></i> chủ ngữ</span>
+        <span><i class="sw v"></i> vị ngữ</span>
+        <span><i class="sw o"></i> tân ngữ</span>
+        <span><i class="sw c"></i> bổ ngữ</span>
+        <span><i class="sw m"></i> định ngữ, trạng ngữ, trợ từ</span>
+        <span><i class="sw dash"></i> chấm rỗng = tùy ý, bỏ được</span>
+      </div>
+
+      <div class="exbar" id="exbar" hidden>
+        <h2 id="exbar-t"></h2>
+        <div class="exrows" id="exrows"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    Phân tích theo lối ngữ pháp dạy tiếng Trung quen thuộc: <span lang="zh">主语</span> chủ ngữ ·
+    <span lang="zh">谓语</span> vị ngữ · <span lang="zh">宾语</span> tân ngữ · <span lang="zh">补语</span> bổ ngữ ·
+    <span lang="zh">定语</span> định ngữ · <span lang="zh">状语</span> trạng ngữ. Câu được tách từ và gán nhãn tự động
+    bằng luật: đúng với phần lớn câu ngắn trình độ HSK1, câu dài nhiều vế thì chỉ là gần đúng. Pinyin lấy từ chính
+    câu nên giữ đúng biến điệu.
+  </footer>
+</div>
+
+<script src="field.js"></script>
+<script src="../hanyu/hanyu.js"></script>
+<script src="../hanyu/hanyu-syntax.js"></script>
+<script src="data.js"></script>
+<script>ZhSvo.boot(d => ({TOPICS: d.dialogue}));</script>
+</body>
+</html>

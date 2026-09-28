@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảng tra nhãn</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <nav class="pagenav" aria-label="Các trang">
+    <a href="index.html">Mục lục</a>
+    <a href="verbs.html">Động từ</a>
+    <a href="grammar.html">Theo ngữ pháp</a>
+    <a href="dialogue.html">Hội thoại</a>
+    <a href="reference.html" aria-current="page">Bảng tra nhãn</a>
+  </nav>
+  <header>
+    <p class="eyebrow">Phân tích câu tiếng Trung · 04</p>
+    <h1>Nòng cốt, <u>bổ ngữ</u>, và phần tháo ra được</h1>
+    <p class="lede">Một phép thử tách đôi mọi thứ đứng quanh động từ: bỏ nó ra, câu còn đúng không? Còn đúng thì là
+      phần bổ nghĩa — định ngữ, trạng ngữ; hỏng thì là bổ ngữ. Dưới cùng là nòng cốt — chủ ngữ, vị ngữ, tân ngữ — vốn
+      không có chuyện tháo. Đây là đủ bộ nhãn mà ba trang đồ thị dùng, kèm tên gọi trong ngữ pháp tiếng Trung; màu nào
+      ứng với màu nấy trên sân.</p>
+  </header>
+
+  <section class="ref">
+    <div class="ref-group">
+      <h3>Nòng cốt — chủ ngữ, vị ngữ, tân ngữ</h3>
+      <p class="sub">Bộ khung không tháo được. Vị ngữ là gốc câu, mọi thứ khác treo vào nó. Khác tiếng Anh: vị ngữ
+        tiếng Trung không nhất thiết là động từ — tính từ và cả danh từ cũng làm vị ngữ được, không cần <span lang="zh">是</span>.</p>
+      <div class="rows">
+        <div class="row k-s"><span class="tag">subj</span><span>chủ ngữ <span lang="zh">主语</span></span>
+          <span class="ex"><span lang="zh"><b>我</b>是学生 · <b>那个杯子</b>十八块钱</span> — ai hay cái gì</span></div>
+        <div class="row k-v"><span class="tag">pred</span><span>vị ngữ <span lang="zh">谓语</span></span>
+          <span class="ex"><span lang="zh">我<b>是</b>学生 · 她很<b>漂亮</b> · 今天<b>星期一</b></span> — động từ, tính từ, danh từ đều được</span></div>
+        <div class="row k-v"><span class="tag">aux</span><span>động từ năng nguyện <span lang="zh">能愿动词</span></span>
+          <span class="ex"><span lang="zh">我<b>会</b>说汉语 · 我<b>想</b>喝茶</span> — đứng ngay trước động từ, thêm ý muốn, biết, có thể</span></div>
+        <div class="row k-v"><span class="tag">asp</span><span>trợ từ động thái <span lang="zh">动态助词</span></span>
+          <span class="ex"><span lang="zh">我买<b>了</b>一些东西 · 我去<b>过</b>北京</span> — thay cho thì: đã xong, đã từng, đang kéo dài</span></div>
+        <div class="row k-o"><span class="tag">obj</span><span>tân ngữ <span lang="zh">宾语</span></span>
+          <span class="ex"><span lang="zh">我喝<b>茶</b> · 他叫<b>谢朋</b></span> — cái chịu tác động, đứng sau động từ</span></div>
+        <div class="row k-o"><span class="tag">iobj</span><span>tân ngữ gián tiếp <span lang="zh">间接宾语</span></span>
+          <span class="ex"><span lang="zh">老师教<b>我们</b>汉语 · 给<b>我</b>一杯水</span> — người nhận, đứng trước tân ngữ chính</span></div>
+        <div class="row k-o"><span class="tag">topic</span><span>chủ đề <span lang="zh">主题</span></span>
+          <span class="ex"><span lang="zh"><b>这件事</b>我来做 · <b>这么多菜</b>，我们吃得完吗</span> — cái được nói tới, đưa lên đầu câu, trước cả chủ ngữ</span></div>
+      </div>
+    </div>
+
+    <div class="ref-group">
+      <h3>Bổ ngữ — <span lang="zh">补语</span></h3>
+      <p class="sub">Đứng sau động từ, nói kết quả, hướng, mức độ, số lần của hành động. Bỏ ra thì câu hỏng hoặc đổi hẳn nghĩa.</p>
+      <div class="rows">
+        <div class="row k-c"><span class="tag">comp</span><span>bổ ngữ <span lang="zh">补语</span></span>
+          <span class="ex"><span lang="zh">说得<b>很好</b> · 听<b>懂</b>了 · 请等<b>一下</b> · 住<b>在</b>北京</span> — mức độ, kết quả, số lượng, nơi chốn</span></div>
+        <div class="row k-c"><span class="tag">vcomp</span><span>động từ nối tiếp <span lang="zh">连动</span></span>
+          <span class="ex"><span lang="zh">我去商店<b>买</b>东西 · 我喜欢<b>听</b>音乐 · 请<b>坐</b></span> — động từ thứ hai, cùng chủ ngữ với động từ trước</span></div>
+        <div class="row k-c"><span class="tag">pobj</span><span>tân ngữ của giới từ <span lang="zh">介词宾语</span></span>
+          <span class="ex"><span lang="zh">在<b>商店</b>工作 · 对<b>我</b>来说</span> — giới từ cũng đòi danh từ của nó</span></div>
+      </div>
+    </div>
+
+    <div class="ref-group">
+      <h3>Bổ nghĩa và từ chức năng</h3>
+      <p class="sub">Thêm vào cho rõ nghĩa, không ai đòi. Bỏ ra câu vẫn đúng — trên đồ thị vẽ nét đứt. Trạng ngữ tiếng
+        Trung luôn đứng <strong>trước</strong> động từ, ngược với tiếng Việt: <span lang="zh">我<b>明天</b>去</span>, tôi đi <em>ngày mai</em>.</p>
+      <div class="rows">
+        <div class="row k-m"><span class="tag">attr</span><span>định ngữ <span lang="zh">定语</span></span>
+          <span class="ex"><span lang="zh"><b>我</b>的朋友 · <b>中国</b>菜 · <b>最好</b>的方法</span> — đứng trước danh từ, thường có <span lang="zh">的</span></span></div>
+        <div class="row k-m"><span class="tag">adv</span><span>trạng ngữ <span lang="zh">状语</span></span>
+          <span class="ex"><span lang="zh">我<b>明天</b>去 · 他<b>在商店</b>工作 · <b>很</b>好 · <b>对我来说</b>，…</span> — thời gian, nơi chốn, mức độ</span></div>
+        <div class="row k-m"><span class="tag">det</span><span>số, lượng từ, chỉ thị</span>
+          <span class="ex"><span lang="zh"><b>这个</b>杯子 · <b>三本</b>书 · <b>一些</b>东西</span> — danh từ đếm phải qua lượng từ</span></div>
+        <div class="row k-m"><span class="tag">de</span><span>trợ từ kết cấu <span lang="zh">结构助词</span></span>
+          <span class="ex"><span lang="zh">我<b>的</b>书 · 说<b>得</b>很好 · 我是坐飞机来<b>的</b></span></span></div>
+        <div class="row k-m"><span class="tag">sfp</span><span>trợ từ ngữ khí <span lang="zh">语气助词</span></span>
+          <span class="ex"><span lang="zh">你好<b>吗</b> · 我们走<b>吧</b> · 他在做什么<b>呢</b></span> — cuối câu: hỏi, rủ, nhấn giọng</span></div>
+        <div class="row k-m"><span class="tag">mark</span><span>từ nối <span lang="zh">关联词</span></span>
+          <span class="ex"><span lang="zh"><b>因为</b>…<b>所以</b> · <b>如果</b>…就 · <b>和</b></span> — nối hai vế hay hai danh từ</span></div>
+        <div class="row k-v"><span class="tag">conj</span><span>vế câu nối tiếp <span lang="zh">分句</span></span>
+          <span class="ex"><span lang="zh">很抱歉，<b>我来晚了</b></span> — vị ngữ của vế sau, treo vào vị ngữ vế đầu</span></div>
+        <div class="row k-m"><span class="tag">voc</span><span>thành phần độc lập <span lang="zh">独立语</span></span>
+          <span class="ex"><span lang="zh"><b>老兄</b>，好久不见 · <b>喂</b>，你在哪儿</span> — lời gọi, thán từ, đứng tách khỏi câu</span></div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    Phân tích theo lối ngữ pháp dạy tiếng Trung quen thuộc: <span lang="zh">主语</span> chủ ngữ ·
+    <span lang="zh">谓语</span> vị ngữ · <span lang="zh">宾语</span> tân ngữ · <span lang="zh">补语</span> bổ ngữ ·
+    <span lang="zh">定语</span> định ngữ · <span lang="zh">状语</span> trạng ngữ. Câu được tách từ và gán nhãn tự động
+    bằng luật: đúng với phần lớn câu ngắn trình độ HSK1, câu dài nhiều vế thì chỉ là gần đúng. Pinyin lấy từ chính
+    câu nên giữ đúng biến điệu.
+  </footer>
+</div>
+
+<script src="field.js"></script>
+</body>
+</html>

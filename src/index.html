@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Học tiếng Trung</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+<style>
+  /* Tông noir như các trang bên dưới, không đổi theo sáng/tối của máy. */
+  :root{
+    --bg:#050608; --panel:#0C0E11; --panel2:#161B20; --ink:#EDEBE6; --muted:#8B9098; --line:#1E242A;
+    --en:#3ED9C9; --zh:#F2B646; --fr:#B99CF6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.55 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px; margin:0 auto; padding:48px 16px 64px}
+  .eyebrow{margin:0 0 10px; color:var(--muted); font:500 11.5px "IBM Plex Mono", monospace; letter-spacing:.14em; text-transform:uppercase}
+  h1{margin:0 0 14px; font:600 clamp(30px, 5vw, 50px)/1.08 "Newsreader", Georgia, serif; letter-spacing:-.015em}
+  h1 em{font-style:normal; color:var(--k)}
+  .lede{margin:0 0 36px; max-width:760px; color:var(--muted); font-size:16px}
+  h2{margin:36px 0 12px; font:500 11px "IBM Plex Mono", monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1px; background:var(--line); border:1px solid var(--line)}
+  a.card{display:block; padding:18px 18px 20px; background:var(--panel); color:inherit; text-decoration:none; transition:background .12s}
+  a.card:hover{background:var(--panel2)}
+  a.card:focus-visible{outline:2px solid var(--k); outline-offset:-2px}
+  .en{--k:var(--en)} .zh{--k:var(--zh)} .fr{--k:var(--fr)}
+  .card .n{display:block; margin-bottom:8px; color:var(--k); font:500 10.5px "IBM Plex Mono", monospace; letter-spacing:.12em; text-transform:uppercase}
+  .card h3{margin:0 0 4px; font:600 21px/1.2 "Newsreader", Georgia, serif; color:var(--k)}
+  .card .tag{margin:0 0 10px; color:var(--ink); font-size:13.5px}
+  .card p{margin:0; color:var(--muted); font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap zh">
+  <p class="eyebrow">Học tiếng Trung · <span lang="zh">中文</span></p>
+  <h1>Học <em>tiếng Trung</em> qua cấu trúc câu</h1>
+  <p class="lede">Hai cách nhìn một câu: tách nó thành từ để thấy câu được ráp từ những đơn vị nào; và vẽ nó thành đồ thị để thấy thành phần nào bám vào thành phần nào. Pinyin trên từng chữ.</p>
+
+  <h2>Các trang</h2>
+  <div class="grid">
+    <a class="card zh" href="zh-svo/index.html">
+      <span class="n">zh-svo · đồ thị câu</span>
+      <h3>Phân tích câu tiếng Trung</h3>
+      <p class="tag">Chủ ngữ, vị ngữ, tân ngữ, bổ ngữ — và trạng ngữ đứng trước động từ</p>
+      <p>Đồ thị tương tác cho câu tiếng Trung HSK1–6, mỗi từ kèm pinyin: động từ, câu luyện theo ngữ pháp, hội thoại và bảng tra nhãn.</p>
+    </a>
+    <a class="card zh" href="zh-chunks/index.html">
+      <span class="n">zh-chunks · từ vựng</span>
+      <h3>Học tiếng Trung theo từ</h3>
+      <p class="tag">Đọc theo từ, không theo từng chữ</p>
+      <p>Từ vựng 15 bài HSK1, 500 từ thông dụng, ngữ pháp và động từ HSK1–6; mỗi từ trong một câu tách sẵn, pinyin trên từng chữ.</p>
+    </a>
+  </div>
+
+  <h2>Ngôn ngữ khác</h2>
+  <div class="grid">
+    <a class="card en" href="https://tmn281196.github.io/english_study/">
+      <span class="n">english_study</span>
+      <h3>Tiếng Anh</h3>
+      <p>Đồ thị câu, khối từ, luyện nói theo Speaking Matrix.</p>
+    </a>
+    <a class="card fr" href="https://tmn281196.github.io/francais_study/">
+      <span class="n">francais_study</span>
+      <h3>Tiếng Pháp</h3>
+      <p>Luyện nói theo các bài Speaking Matrix, câu tiếng Pháp ngắt khối.</p>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

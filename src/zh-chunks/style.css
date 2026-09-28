@@ -1,0 +1,198 @@
+/* Học tiếng Trung theo từ — cùng tông noir với en-chunks, không đổi theo sáng/tối của máy.
+   Nhóm tô xoay vòng tám màu: lớp .c0 … .c7 đặt --k (màu) và --kb (nền tối của màu đó),
+   nên thẻ, từ trong câu, ô thước và nút mục lục dùng chung một cách tô. */
+:root{
+  --bg:#050608; --panel:#0C0E11; --panel2:#161B20; --ink:#EDEBE6; --muted:#8B9098;
+  --line:#1E242A; --slot:#2A3038; --over:#E5484D;
+  --k:#EDEBE6; --kb:#161B20;
+  --cell:10px;
+  --han:"Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Source Han Sans SC", "SimHei", sans-serif;
+}
+.c0{--k:#3ED9C9; --kb:#0A2C2B}
+.c1{--k:#F07CB4; --kb:#2F1123}
+.c2{--k:#F2B646; --kb:#31250B}
+.c3{--k:#84A9F5; --kb:#121E36}
+.c4{--k:#8FD67A; --kb:#152A10}
+.c5{--k:#F2915A; --kb:#331A0C}
+.c6{--k:#D6E05A; --kb:#282B0B}
+.c7{--k:#B99CF6; --kb:#231A3D}
+
+*{box-sizing:border-box; border-radius:0}
+[hidden]{display:none !important}
+body{
+  background:var(--bg); color:var(--ink); margin:0;
+  font-family:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+[lang="zh"]{font-family:var(--han)}
+#field{position:fixed; inset:0; width:100%; height:100%; display:block; z-index:0; pointer-events:none}
+.wrap{position:relative; z-index:1; max-width:1460px; margin:0 auto; padding:28px 16px 48px}
+code{font-family:"IBM Plex Mono", monospace; font-size:12.5px; color:var(--ink)}
+
+/* ---- đầu trang ---- */
+header{margin-bottom:26px}
+.eyebrow{
+  font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 10px;
+}
+h1{
+  font-family:"Newsreader", Georgia, serif; font-weight:600;
+  font-size:clamp(30px, 5vw, 50px); line-height:1.08; letter-spacing:-.015em; margin:0 0 14px;
+}
+h1 em{font-style:normal; color:#3ED9C9}
+h1 i{font-style:normal; color:var(--muted); text-decoration:line-through; text-decoration-thickness:2px}
+.lede{margin:0; color:var(--muted); font-size:16px; max-width:980px}
+.lede strong, .lede b{color:var(--ink); font-weight:600}
+.ex{
+  display:inline-block; padding:0 6px; line-height:1.5; color:#3ED9C9;
+  border:1px solid #3ED9C9; background:#0A2C2B; font-size:15px;
+}
+.howto{margin-top:16px; max-width:980px; border:1px solid var(--line); background:var(--panel)}
+.howto summary{
+  cursor:pointer; padding:9px 13px; color:var(--muted); list-style:none;
+  font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+}
+.howto summary::before{content:"+ "} .howto[open] summary::before{content:"\2212 "}
+.howto summary:hover{color:var(--ink)}
+.howto ul{margin:0; padding:0 16px 12px 34px; color:var(--muted); font-size:14px}
+.howto strong, .howto em{color:var(--ink)}
+
+.hub .n{
+  display:block; margin-bottom:6px; color:var(--muted);
+  font:500 10.5px "IBM Plex Mono", monospace; letter-spacing:.14em; text-transform:uppercase;
+}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.chip{
+  display:flex; align-items:baseline; gap:8px; cursor:pointer; text-align:left;
+  background:var(--kb); border:1px solid var(--k); color:var(--muted); padding:5px 10px; font:13px "IBM Plex Sans", sans-serif;
+}
+.chip b{color:var(--k); font:600 16px var(--han)}
+.chip em{font:normal 10px "IBM Plex Mono", monospace; letter-spacing:.08em; text-transform:uppercase; opacity:.7}
+.chip:hover{background:var(--panel2)}
+
+/* ---- mục lục: giáo trình + 500 từ ---- */
+.hub{border:1px solid var(--line); background:var(--line); display:grid; gap:1px; margin-bottom:22px}
+.hub button{
+  display:block; text-align:left; cursor:pointer; border:0; color:inherit; font:inherit;
+  background:var(--panel); padding:12px 14px 13px; transition:background .12s, box-shadow .12s;
+}
+.hub button:hover{background:var(--panel2)}
+.hub button.on{background:var(--kb); box-shadow:inset 0 -3px 0 var(--k)}
+.hub button:focus-visible{outline:2px solid var(--k); outline-offset:-2px}
+.hub h2{margin:0 0 4px; font:600 18px/1.25 "Newsreader", Georgia, serif; color:var(--k)}
+.hub h2[lang="zh"]{font:600 17px/1.3 var(--han)}
+.hub p{margin:0; color:var(--muted); font-size:12px; line-height:1.4}
+.hub .cnt{display:block; margin-top:8px; color:var(--k); opacity:.85; font:10.5px "IBM Plex Mono", monospace; letter-spacing:.08em}
+.hubrow{background:var(--panel)}
+.hubrow h3{
+  margin:0; padding:10px 14px 8px; color:var(--muted); background:var(--bg);
+  font:500 10.5px "IBM Plex Mono", monospace; letter-spacing:.14em; text-transform:uppercase;
+}
+.hubgrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:1px; background:var(--line)}
+
+/* ---- thanh điều khiển ---- */
+.controls{
+  position:sticky; top:0; z-index:5; display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  padding:10px 0; margin-bottom:8px; background:rgba(5,6,8,.9); backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+#q{
+  flex:1 1 260px; min-width:0; padding:8px 11px; background:var(--panel); color:var(--ink);
+  border:1px solid var(--line); font:13.5px "IBM Plex Mono", monospace;
+}
+#q:focus{outline:1px solid #3ED9C9; outline-offset:-1px}
+.seg{display:flex; gap:1px; background:var(--line); border:1px solid var(--line)}
+.seg button{
+  background:var(--panel); color:var(--muted); border:0; cursor:pointer; padding:8px 12px;
+  font:10.5px "IBM Plex Mono", monospace; letter-spacing:.11em; text-transform:uppercase;
+}
+.seg button:hover{background:var(--panel2); color:var(--ink)}
+.seg button[aria-pressed="true"]{background:#0A2C2B; color:#3ED9C9; box-shadow:inset 0 -2px 0 #3ED9C9}
+.stat{margin-left:auto; color:var(--muted); font:11px "IBM Plex Mono", monospace; letter-spacing:.06em}
+
+/* ---- phân trang ---- */
+.pages{display:flex; flex-wrap:wrap; gap:4px; align-items:center; justify-content:center; margin:22px 0 4px}
+.pages button{
+  min-width:34px; padding:7px 9px; cursor:pointer; background:var(--panel); color:var(--muted);
+  border:1px solid var(--line); font:11.5px "IBM Plex Mono", monospace;
+}
+.pages button:hover:not(:disabled){background:var(--panel2); color:var(--ink)}
+.pages button[aria-current="page"]{background:#0A2C2B; color:#3ED9C9; border-color:#3ED9C9}
+.pages button:disabled{opacity:.35; cursor:default}
+.pages .gap{color:var(--muted); padding:0 4px; font:11.5px "IBM Plex Mono", monospace}
+
+/* ---- nhóm, thẻ ---- */
+.note{margin-top:30px}
+.noteh{display:flex; align-items:baseline; flex-wrap:wrap; gap:10px; margin:0 0 6px;
+  font:600 26px/1.2 "Newsreader", Georgia, serif; color:var(--k)}
+.noteh [lang="zh"]{font:600 24px/1.2 var(--han)}
+.noteh .dot{width:12px; height:12px; background:var(--k); align-self:center}
+.notei{margin:0 0 12px; color:var(--muted); max-width:980px}
+.lv{font:10px "IBM Plex Mono", monospace; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line); padding:1px 6px; vertical-align:middle}
+.cards{display:grid; grid-template-columns:repeat(auto-fill, minmax(330px, 1fr)); gap:1px; background:var(--line); border:1px solid var(--line)}
+.card{background:var(--panel); padding:13px 15px 12px; min-width:0}
+.card .head{display:flex; align-items:baseline; gap:10px}
+.card h3{margin:0; font:600 26px/1.2 var(--han); color:var(--k)}
+.card .py{flex:1; color:var(--ink); font:15px "IBM Plex Sans", sans-serif; opacity:.9}
+.vi{margin:4px 0 0; color:var(--muted); font-size:14px}
+.tr{margin:0 0 4px; color:var(--muted); font-size:13.5px}
+.noex{margin:10px 0 0; color:var(--muted); font:11px "IBM Plex Mono", monospace}
+.card.flash{animation:flash 1.6s ease-out}
+@keyframes flash{from{box-shadow:inset 0 0 0 2px var(--k); background:var(--kb)} to{box-shadow:none}}
+.empty{color:var(--muted); font:13px "IBM Plex Mono", monospace; padding:16px 0}
+
+/* ---- câu tách từ ---- */
+.sent{margin:12px 0 6px; font:19px/1 var(--han); color:var(--ink); display:flex; flex-wrap:wrap; align-items:flex-end; gap:5px 3px}
+.spk{align-self:center; margin-right:4px; color:var(--muted); font:10.5px "IBM Plex Mono", monospace; border:1px solid var(--line); padding:1px 5px}
+ruby{ruby-position:over; ruby-align:center}
+rt{font:10.5px/1.3 "IBM Plex Sans", sans-serif; color:var(--muted); letter-spacing:.01em}
+.p{color:var(--muted); align-self:flex-end; padding-bottom:5px}
+.wd{
+  display:inline-flex; align-items:flex-end; padding:3px 5px 4px; cursor:default;
+  border:1px solid var(--line); color:#D9DBDF;
+  transition:padding .25s, border-color .25s, background .25s, box-shadow .25s;
+}
+.wd .z{display:inline-block; border:1px solid transparent; transition:padding .25s, border-color .25s, margin .25s}
+.wd.m{border-color:var(--k); background:var(--kb); color:var(--ink)}
+.wd.m rt{color:var(--k)}
+.wd.t{background:var(--k); border-color:var(--k); color:var(--bg); font-weight:600}
+.wd.t rt{color:var(--bg); opacity:.85}
+.wd[title]:hover{box-shadow:0 0 0 1px var(--k)}
+.wd.x{color:var(--ink)}
+
+/* Chế độ Chữ: ô từ tan ra, mỗi chữ một ô; từ nhiều chữ chỉ còn gạch màu bên dưới. */
+.mode-chars .wd{padding:0; border-color:transparent; background:transparent; color:var(--ink); font-weight:400; gap:3px}
+.mode-chars .wd .z{padding:3px 5px 4px; border-color:var(--line)}
+.mode-chars .wd.m, .mode-chars .wd.t{box-shadow:inset 0 -2px 0 var(--k)}
+.mode-chars .wd rt, .mode-chars .wd.t rt{color:var(--muted); opacity:1}
+
+/* ---- thước trí nhớ làm việc ---- */
+.meter{display:grid; gap:5px; margin-top:6px}
+.slots{position:relative; display:flex; align-items:center; gap:2px; min-height:14px; flex-wrap:nowrap}
+.slots i{flex:0 0 var(--cell); height:10px; background:var(--slot); position:relative; z-index:1}
+.slots i.k{background:var(--k); opacity:.6}
+.slots i.t{opacity:1}
+.slots i:nth-of-type(n+10){box-shadow:inset 0 -3px 0 var(--over)}
+.slots .band{
+  position:absolute; z-index:0; top:-3px; bottom:-3px;
+  left:calc(5 * (var(--cell) + 2px) - 1px); width:calc(4 * (var(--cell) + 2px));
+  border-left:1px dashed #4A525C; border-right:1px dashed #4A525C; background:rgba(237,235,230,.04);
+}
+.slots .lbl{margin-left:8px; white-space:nowrap; color:var(--muted); font:11px "IBM Plex Mono", monospace}
+.slots .lbl b{color:var(--ink); font-weight:500}
+.slots.over .lbl b{color:var(--over)}
+.card .as-chars{display:none}
+.mode-chars .card .as-chars{display:flex}
+.mode-chars .card .as-words{display:none}
+.meter.big{--cell:14px}
+.meter.big .slots i{height:13px}
+
+footer{margin-top:34px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:13px}
+
+@media (max-width:640px){
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .stat{margin-left:0; width:100%}
+  :root{--cell:8px}
+  .meter.big{--cell:11px}
+  .hubgrid{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
